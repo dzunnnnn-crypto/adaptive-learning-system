@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 8,
+  "contentVersion": 1,
+  "id": "article-template",
+  "title": "Замените названием статьи",
+  "source": {
+    "title": "Замените официальным источником",
+    "url": "https://example.com/official-article",
+    "checkedAt": "2026-07-21",
+    "language": "en",
+    "status": "needs-review",
+    "artifactAudit": {
+      "status": "verified",
+      "artifactCount": 1
+    },
+    "formatAudit": {
+      "status": "verified",
+      "entries": [
+        {
+          "id": "format-paragraph",
+          "sourceHeading": "Replace with source heading",
+          "kind": "paragraph",
+          "unitId": "unit-one",
+          "exclusionReason": null
+        },
+        {
+          "id": "format-callout",
+          "sourceHeading": "Replace with source heading",
+          "kind": "callout",
+          "unitId": "unit-one",
+          "exclusionReason": null
+        },
+        {
+          "id": "format-strong",
+          "sourceHeading": "Replace with source heading",
+          "kind": "strong",
+          "unitId": "unit-one",
+          "exclusionReason": null
+        },
+        {
+          "id": "format-artifact",
+          "sourceHeading": "Table 1: Source example",
+          "kind": "artifact",
+          "unitId": "unit-one",
+          "exclusionReason": null
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "id": "section-one",
+      "title": "Замените названием раздела",
+      "order": 1,
+      "sourceHeading": "Replace with source heading"
+    }
+  ],
+  "units": [
+    {
+      "id": "unit-one",
+      "sectionId": "section-one",
+      "order": 1,
+      "title": "Замените заголовком первого фрагмента",
+      "contentBlocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "type": "text",
+              "text": "Замените это близким текстом первой законченной мысли из проверенного источника."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "label": "Замените подпись выноски",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "runs": [
+                {
+                  "type": "strong",
+                  "text": "Сохраните исходный акцент."
+                },
+                {
+                  "type": "text",
+                  "text": " Не превращайте выноску в обычный абзац."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "artifact",
+          "artifactRef": "table-source-example"
+        }
+      ],
+      "sourceRefs": [
+        "source-section-one"
+      ],
+      "estimatedMinutes": 3,
+      "check": {
+        "prompt": "Замените этот вопрос на проверку понимания первого фрагмента.",
+        "choices": {
+          "А": "Замените первым вариантом",
+          "Б": "Замените вторым вариантом",
+          "В": "Замените третьим вариантом"
+        },
+        "correct": "А",
+        "explanations": {
+          "А": "Объясните, почему этот вариант верен.",
+          "Б": "Объясните, почему этот вариант неверен.",
+          "В": "Объясните, почему этот вариант неверен."
+        }
+      },
+      "artifactRefs": [
+        "table-source-example"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "id": "source-section-one",
+      "sourceHeading": "Replace with source heading",
+      "unitIds": [
+        "unit-one"
+      ]
+    }
+  ],
+  "sourceArtifacts": [
+    {
+      "id": "table-source-example",
+      "kind": "table",
+      "sourceHeading": "Table 1: Source example",
+      "caption": "Пример записи об артефакте источника: сводная таблица ключевых идей первого раздела.",
+      "coverage": "covered",
+      "unitIds": [
+        "unit-one"
+      ],
+      "exclusionReason": null,
+      "content": {
+        "type": "table",
+        "columns": [
+          "Идея",
+          "Учебная формулировка"
+        ],
+        "rows": [
+          [
+            "Замените идеей источника",
+            "Замените точным учебным изложением смысла этой строки"
+          ]
+        ],
+        "align": [
+          "left",
+          "left"
+        ]
+      }
+    }
+  ],
+  "application": {
+    "prompt": "Какой один приём из этой статьи ты применишь на практике?",
+    "choices": {
+      "А": "Замените первым практическим выбором",
+      "Б": "Замените вторым практическим выбором",
+      "В": "Замените третьим практическим выбором"
+    }
+  }
+}

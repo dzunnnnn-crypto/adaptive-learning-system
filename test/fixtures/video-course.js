@@ -1,0 +1,113 @@
+export function makeVideoCourse() {
+  const checks = ["А", "Б", "В"].map((correct, index) => ({
+    id: "introduction-question-" + (index + 1),
+    prompt: "Проверочный вопрос по первой главе номер " + (index + 1) + "?",
+    choices: {
+      "А": "Правдоподобный вариант А",
+      "Б": "Правдоподобный вариант Б",
+      "В": "Правдоподобный вариант В",
+    },
+    correct,
+    explanations: {
+      "А": "Разбор варианта А.",
+      "Б": "Разбор варианта Б.",
+      "В": "Разбор варианта В.",
+    },
+  }));
+  return {
+    schemaVersion: 7,
+    contentVersion: 1,
+    id: "youtube-video-course",
+    title: "Тестовый видеокурс YouTube",
+    source: {
+      title: "Public YouTube source",
+      url: "https://www.youtube.com/watch?v=ocbtH4-FttI",
+      checkedAt: "2026-08-01",
+      language: "ru",
+      status: "verified",
+      artifactAudit: { status: "verified", artifactCount: 1 },
+    },
+    videoSource: {
+      platform: "youtube",
+      videoId: "ocbtH4-FttI",
+      canonicalUrl: "https://www.youtube.com/watch?v=ocbtH4-FttI",
+      channel: "Сережа Рис",
+      durationSeconds: 6525,
+      chapters: [
+        {
+          id: "introduction",
+          order: 1,
+          title: "Introduction",
+          startSeconds: 0,
+          endSeconds: 353,
+          status: "ready",
+          unitId: "introduction",
+          subtitleAsset: {
+            fileName: "introduction.ru.vtt",
+            mimeType: "text/vtt",
+            sizeBytes: 32,
+            sha256: "0".repeat(64),
+            language: "ru",
+            extractorVersion: "2026.07.04",
+          },
+        },
+        {
+          id: "orca-workspace",
+          order: 2,
+          title: "Orca: Launching Agents and Workspace Board",
+          startSeconds: 353,
+          endSeconds: 822,
+          status: "planned",
+        },
+      ],
+    },
+    sections: [{
+      id: "video-chapters",
+      title: "Главы видео",
+      order: 1,
+      sourceHeading: "YouTube chapters",
+    }],
+    units: [{
+      id: "introduction",
+      sectionId: "video-chapters",
+      order: 1,
+      title: "Introduction",
+      coreText: "Очищенная расшифровка первой главы достаточной длины для проверки схемы видеокурса.",
+      sourceRefs: ["source-introduction"],
+      estimatedMinutes: 12,
+      checks,
+      transcript: {
+        language: "ru",
+        kind: "cleaned",
+        blocks: [{
+          id: "opening",
+          startSeconds: 28,
+          endSeconds: 94,
+          text: "Первый очищенный смысловой абзац выбранной главы.",
+        }],
+      },
+      artifactRefs: ["video-introduction"],
+    }],
+    coverage: [{
+      id: "source-introduction",
+      sourceHeading: "Introduction 0:00-5:53",
+      unitIds: ["introduction"],
+    }],
+    sourceArtifacts: [{
+      id: "video-introduction",
+      kind: "video",
+      sourceHeading: "Introduction",
+      caption: "Первая глава ролика.",
+      coverage: "covered",
+      unitIds: ["introduction"],
+      exclusionReason: null,
+      content: {
+        type: "youtube",
+        videoId: "ocbtH4-FttI",
+        startSeconds: 0,
+        endSeconds: 353,
+        accessibilityText: "Введение к разбору AI-сетапа разработчика",
+      },
+    }],
+  };
+}

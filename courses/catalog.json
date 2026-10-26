@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "courses": [
+    {
+      "id": "chatgpt-images-practice",
+      "order": 1,
+      "title": "ChatGPT Images: практические сценарии",
+      "summary": "15 минут видео, 14 небольших глав и 42 вопроса с объяснениями. Пример реального сценария обучения.",
+      "archived": false,
+      "addedAt": "2026-10-26"
+    }
+  ]
+}

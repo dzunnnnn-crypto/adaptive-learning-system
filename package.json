@@ -1,0 +1,30 @@
+{
+  "name": "adaptive-learning-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "vitest run && node scripts/validate-content.js && node scripts/smoke-example.js",
+    "validate": "node scripts/validate-content.js",
+    "test:smoke": "node scripts/smoke-example.js"
+  },
+  "dependencies": {
+    "@openai/codex-sdk": "^0.144.6",
+    "express": "^5.2.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.12"
+  },
+  "description": "Video learning in short chapters with quizzes and persistent progress",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

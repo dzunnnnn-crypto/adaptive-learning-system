@@ -1,0 +1,10 @@
+node_modules/
+.local/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+courses/**/learning_memory.md
+data/
+.DS_Store

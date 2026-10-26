@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 7,
+  "contentVersion": 1,
+  "id": "youtube-video-template",
+  "title": "Замените названием выбранной главы YouTube",
+  "source": {
+    "title": "Замените названием публичного YouTube-видео",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "checkedAt": "2026-08-01",
+    "language": "ru",
+    "status": "needs-review",
+    "artifactAudit": {
+      "status": "verified",
+      "artifactCount": 1
+    }
+  },
+  "videoSource": {
+    "platform": "youtube",
+    "videoId": "dQw4w9WgXcQ",
+    "canonicalUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "channel": "Замените названием канала",
+    "durationSeconds": 600,
+    "chapters": [
+      {
+        "id": "selected-chapter",
+        "order": 1,
+        "title": "Замените названием выбранной главы",
+        "startSeconds": 0,
+        "endSeconds": 180,
+        "status": "ready",
+        "unitId": "selected-chapter",
+        "subtitleAsset": {
+          "fileName": "selected-chapter.ru.vtt",
+          "mimeType": "text/vtt",
+          "sizeBytes": 1,
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "language": "ru",
+          "extractorVersion": "replace-with-verified-version"
+        }
+      },
+      {
+        "id": "next-chapter",
+        "order": 2,
+        "title": "Замените названием следующей главы",
+        "startSeconds": 180,
+        "endSeconds": 600,
+        "status": "planned"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "video-chapters",
+      "title": "Главы видео",
+      "order": 1,
+      "sourceHeading": "YouTube chapters"
+    }
+  ],
+  "units": [
+    {
+      "id": "selected-chapter",
+      "sectionId": "video-chapters",
+      "order": 1,
+      "title": "Замените заголовком выбранной главы",
+      "coreText": "Замените этот текст близкой очищенной расшифровкой только выбранной главы без добавления будущих глав.",
+      "sourceRefs": [
+        "source-selected-chapter"
+      ],
+      "estimatedMinutes": 10,
+      "checks": [
+        {
+          "id": "selected-chapter-question-one",
+          "prompt": "Замените вопросом, который проверяет решение из выбранной главы.",
+          "choices": {
+            "А": "Замените правдоподобным вариантом А",
+            "Б": "Замените правдоподобным вариантом Б",
+            "В": "Замените правдоподобным вариантом В"
+          },
+          "correct": "А",
+          "explanations": {
+            "А": "Замените разбором варианта А",
+            "Б": "Замените разбором варианта Б",
+            "В": "Замените разбором варианта В"
+          }
+        },
+        {
+          "id": "selected-chapter-question-two",
+          "prompt": "Замените вторым вопросом по выбранной главе видео.",
+          "choices": {
+            "А": "Замените правдоподобным вариантом А",
+            "Б": "Замените правдоподобным вариантом Б",
+            "В": "Замените правдоподобным вариантом В"
+          },
+          "correct": "Б",
+          "explanations": {
+            "А": "Замените разбором варианта А",
+            "Б": "Замените разбором варианта Б",
+            "В": "Замените разбором варианта В"
+          }
+        },
+        {
+          "id": "selected-chapter-question-three",
+          "prompt": "Замените третьим вопросом по выбранной главе видео.",
+          "choices": {
+            "А": "Замените правдоподобным вариантом А",
+            "Б": "Замените правдоподобным вариантом Б",
+            "В": "Замените правдоподобным вариантом В"
+          },
+          "correct": "В",
+          "explanations": {
+            "А": "Замените разбором варианта А",
+            "Б": "Замените разбором варианта Б",
+            "В": "Замените разбором варианта В"
+          }
+        }
+      ],
+      "transcript": {
+        "language": "ru",
+        "kind": "cleaned",
+        "blocks": [
+          {
+            "id": "selected-chapter-opening",
+            "startSeconds": 0,
+            "endSeconds": 30,
+            "text": "Замените первым очищенным смысловым абзацем выбранной главы с его реальными временными границами."
+          }
+        ]
+      },
+      "artifactRefs": [
+        "selected-chapter-video"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "id": "source-selected-chapter",
+      "sourceHeading": "Замените названием и временем выбранной главы",
+      "unitIds": [
+        "selected-chapter"
+      ]
+    }
+  ],
+  "sourceArtifacts": [
+    {
+      "id": "selected-chapter-video",
+      "kind": "video",
+      "sourceHeading": "Замените названием выбранной главы",
+      "caption": "Встроенный YouTube-фрагмент выбранной главы.",
+      "coverage": "covered",
+      "unitIds": [
+        "selected-chapter"
+      ],
+      "exclusionReason": null,
+      "content": {
+        "type": "youtube",
+        "videoId": "dQw4w9WgXcQ",
+        "startSeconds": 0,
+        "endSeconds": 180,
+        "accessibilityText": "Замените кратким описанием выбранной видеоглавы"
+      }
+    }
+  ]
+}

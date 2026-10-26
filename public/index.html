@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Видео небольшими главами, вопросы с объяснениями и сохранение прогресса">
+    <title>Adaptive Learning System</title>
+    <script src="/theme-boot.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="course-header">
+      <div class="header-inner">
+        <div class="course-identity">
+          <span class="eyebrow">Учебная система</span>
+          <strong data-role="course-title">Adaptive Learning System</strong>
+        </div>
+        <div class="progress-cluster" data-role="lesson-progress" aria-label="Прогресс курса" hidden>
+          <span data-role="progress">0 из 0</span>
+          <span class="progress-track" aria-hidden="true"><span data-role="progress-bar"></span></span>
+        </div>
+        <div class="header-controls">
+          <label class="ai-profile-control">
+            <span>ИИ</span>
+            <select data-role="ai-profile-select" data-busy-control aria-label="Профиль ИИ"></select>
+          </label>
+          <button type="button" class="secondary-button outline-header-button" data-action="lesson-outline" hidden>Оглавление</button>
+          <button type="button" class="secondary-button reading-mode-toggle" data-action="toggle-reading-mode" hidden>Режим чтения: выкл</button>
+          <button type="button" class="secondary-button all-courses-button" data-action="all-courses" hidden>Все курсы</button>
+          <button
+            type="button"
+            class="icon-button theme-toggle"
+            data-role="theme-toggle"
+            aria-label="Включить тёмную тему"
+            title="Включить тёмную тему"
+          >
+            <span data-theme-icon aria-hidden="true">☾</span>
+          </button>
+          <div class="size-cluster" data-role="lesson-size" hidden>
+            <div class="size-control" aria-label="Размер учебного блока">
+              <button type="button" class="icon-button" data-action="decrease" aria-label="Уменьшить учебный блок">−</button>
+              <span><strong data-role="fragment-count">1</strong><small>фрагмент</small></span>
+              <button type="button" class="icon-button" data-action="increase" aria-label="Увеличить учебный блок">+</button>
+            </div>
+            <small class="size-limit" data-role="size-limit" aria-live="polite"></small>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="catalog-shell" data-screen="catalog">
+      <div class="catalog-intro">
+        <span class="eyebrow">Учебная система</span>
+        <h1>Мои курсы</h1>
+        <p>Смотри видео небольшими главами, проверяй понимание и продолжай с сохранённого места.</p>
+      </div>
+      <p class="catalog-message" data-role="catalog-message" role="status" hidden></p>
+      <section class="continue-panel" data-role="continue-panel" hidden></section>
+      <section aria-labelledby="all-courses-title">
+        <div class="catalog-section-heading archive-section-heading">
+          <div>
+            <span class="eyebrow">Библиотека</span>
+            <h2 id="all-courses-title">Все курсы</h2>
+          </div>
+          <div class="course-sort" role="group" aria-label="Сортировка курсов">
+            <span class="course-sort-label">Сортировка:</span>
+            <button type="button" class="course-sort-button" data-action="sort-courses" data-sort="added" aria-pressed="false">По дате добавления</button>
+            <button type="button" class="course-sort-button" data-action="sort-courses" data-sort="used" aria-pressed="false">По последнему использованию</button>
+            <button type="button" class="course-sort-button" data-action="sort-courses" data-sort="progress" aria-pressed="false">По степени пройденности</button>
+          </div>
+        </div>
+        <div class="course-grid" data-role="course-grid"></div>
+        <p data-role="catalog-empty" hidden>В библиотеке пока нет опубликованных курсов.</p>
+      </section>
+      <section aria-labelledby="completed-title" data-role="completed-section" hidden>
+        <div class="catalog-section-heading archive-section-heading">
+          <div>
+            <span class="eyebrow">Завершённые</span>
+            <h2 id="completed-title">Пройденные курсы</h2>
+          </div>
+          <button type="button" class="archive-toggle" data-action="toggle-completed" aria-expanded="false" aria-controls="completed-grid">
+            <span>Пройденные · <span data-role="completed-count">0</span> курсов</span>
+            <span class="disclosure-mark" aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div id="completed-grid" class="course-grid" data-role="completed-grid" hidden></div>
+      </section>
+      <section aria-labelledby="archived-title" data-role="archived-section" hidden>
+        <div class="catalog-section-heading archive-section-heading">
+          <div>
+            <span class="eyebrow">Архив</span>
+            <h2 id="archived-title">Архивные курсы</h2>
+          </div>
+          <button type="button" class="archive-toggle" data-action="toggle-archive" aria-expanded="false" aria-controls="archived-grid">
+            <span>Архив · <span data-role="archive-count">0</span> курсов</span>
+            <span class="disclosure-mark" aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div id="archived-grid" class="course-grid" data-role="archived-grid" hidden></div>
+      </section>
+    </main>
+
+    <div data-screen="lesson" hidden>
+    <main class="learning-shell">
+      <section class="lesson-surface" aria-labelledby="lesson-title">
+        <div class="lesson-heading">
+          <span class="eyebrow" data-role="lesson-kicker">Текущий блок</span>
+          <h1 id="lesson-title" data-role="lesson-title">Загрузка...</h1>
+        </div>
+
+        <section class="reading-mode-plate" data-role="reading-mode-plate" hidden>
+          <span>Режим чтения: вопросы отключены, блоки открываются без проверки.</span>
+          <button type="button" class="text-button" data-action="disable-reading-mode">Включить вопросы</button>
+        </section>
+
+        <div class="lesson-copy" data-role="lesson-body"></div>
+        <section class="video-course-status" data-role="video-progress" hidden aria-live="polite"></section>
+
+        <div class="lesson-actions" data-role="lesson-actions" aria-label="Дополнительные режимы">
+          <button type="button" class="secondary-button" data-action="detail">Подробнее</button>
+          <button type="button" class="secondary-button" data-action="practice">Практика</button>
+          <button type="button" class="secondary-button" data-action="rephrase">Ничего не понял</button>
+        </div>
+        <p class="action-status" data-role="action-status" role="status" aria-live="polite" hidden></p>
+
+        <div class="layers" data-role="layers" aria-live="polite"></div>
+
+        <section class="clarification-panel" data-role="clarification" hidden aria-labelledby="clarification-title">
+          <span class="eyebrow">Уточняющие вопросы</span>
+          <h2 id="clarification-title">Спроси по материалу или шире</h2>
+          <div class="clarification-messages" data-role="clarification-messages" aria-live="polite"></div>
+          <label for="clarification-input">Твой вопрос</label>
+          <textarea id="clarification-input" data-role="clarification-input" data-busy-control rows="3" placeholder="Что хочется уточнить?"></textarea>
+          <div class="clarification-footer">
+            <small>Каждый вопрос использует лимит выбранной модели. При ошибке формата возможна одна автоматическая повторная попытка. Переписка сохраняется локально. Не вставляй пароли, токены и приватные данные клиентов.</small>
+            <span class="clarification-status" data-role="clarification-status" hidden></span>
+            <button type="button" class="primary-button" data-action="clarification-submit">Спросить</button>
+          </div>
+        </section>
+
+        <section class="practice-panel" data-role="practice" hidden aria-labelledby="practice-title">
+          <span class="eyebrow">Короткая практика</span>
+          <h2 id="practice-title">Попробуй применить идею</h2>
+          <p class="ai-answer-model" data-role="practice-model"></p>
+          <p data-role="practice-task"></p>
+          <label for="practice-answer">Твой ответ</label>
+          <textarea id="practice-answer" data-role="practice-answer" rows="5" placeholder="Напиши свой вариант..."></textarea>
+          <div class="practice-footer">
+            <button type="button" class="primary-button" data-action="practice-review">Проверить</button>
+            <span>3-5 минут</span>
+          </div>
+          <div class="feedback" data-role="practice-feedback" aria-live="polite"></div>
+        </section>
+
+        <section class="prepared-activities" data-role="prepared-activities" hidden aria-label="Подготовленная практика"></section>
+
+        <section class="question-panel" data-role="question-panel" aria-labelledby="question-title">
+          <span class="eyebrow" data-role="question-kicker">Проверочный вопрос</span>
+          <h2 id="question-title" data-role="question"></h2>
+          <div class="choice-list" data-role="question-choices"></div>
+          <div class="review" data-role="review" aria-live="polite"></div>
+          <div class="question-skip" data-role="question-skip" hidden>
+            <button type="button" class="text-button" data-action="skip-questions">Пропустить все вопросы блока</button>
+            <span class="question-skip-sep" aria-hidden="true">·</span>
+            <button type="button" class="text-button" data-action="enable-reading-mode">Отключить вопросы насовсем</button>
+          </div>
+        </section>
+
+        <section class="application-panel" data-role="application" hidden aria-labelledby="application-title">
+          <span class="eyebrow">Применение в проекте</span>
+          <h2 id="application-title" data-role="application-prompt"></h2>
+          <div class="choice-list" data-role="application-choices"></div>
+        </section>
+
+        <section class="completion-panel" data-role="completion" hidden aria-live="polite">
+          <span class="completion-mark" aria-hidden="true">✓</span>
+          <div>
+            <span class="eyebrow">Курс завершён</span>
+            <h2>Материал пройден</h2>
+            <p data-role="completion-text"></p>
+          </div>
+        </section>
+
+        <div class="lesson-footer">
+          <p class="status-line" data-role="status-line">Сначала ответь на вопрос</p>
+          <button type="button" class="primary-button next-button" data-action="next" disabled>Следующий блок</button>
+        </div>
+      </section>
+
+      <aside class="error-banner" data-role="error" hidden role="alert">
+        <div>
+          <strong>Действие не выполнено</strong>
+          <p data-role="error-message"></p>
+        </div>
+        <button type="button" class="secondary-button" data-action="retry">Повторить</button>
+      </aside>
+    </main>
+    </div>
+
+    <div data-screen="review" hidden>
+      <main class="review-shell">
+        <section class="review-surface" aria-labelledby="review-title">
+          <div class="review-toolbar">
+            <button type="button" class="primary-button" data-outline-action="return-current">Вернуться к текущему блоку</button>
+          </div>
+          <div data-role="review-content"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="outline-overlay" data-role="course-outline" hidden>
+      <div class="outline-backdrop" data-outline-action="close"></div>
+      <aside class="outline-drawer" role="dialog" aria-modal="true" aria-labelledby="outline-title">
+        <div class="outline-toolbar">
+          <div>
+            <span class="eyebrow">Содержание курса</span>
+            <h2 id="outline-title" tabindex="-1">Загрузка...</h2>
+          </div>
+          <button type="button" class="icon-button" data-outline-action="close" aria-label="Закрыть оглавление">×</button>
+        </div>
+        <p class="playlist-notice" data-role="playlist-notice" role="status" aria-live="polite" hidden></p>
+        <div data-role="outline-loading" role="status">Загружаю оглавление…</div>
+        <div data-role="outline-error" role="alert" hidden>
+          <p data-role="outline-error-message"></p>
+          <button type="button" class="secondary-button" data-outline-action="retry">Повторить</button>
+        </div>
+        <div data-role="outline-content"></div>
+      </aside>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
