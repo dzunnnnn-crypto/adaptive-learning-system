@@ -22,7 +22,7 @@
     "supertest": "^7.2.2",
     "vitest": "^4.1.12"
   },
-  "description": "Video learning in short chapters with quizzes and persistent progress",
+  "description": "Learn complex material in small steps: books, articles and videos with quizzes, answer explanations and persistent progress",
   "license": "MIT",
   "engines": {
     "node": ">=22.12.0"
